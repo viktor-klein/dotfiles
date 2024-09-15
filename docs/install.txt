@@ -1,0 +1,175 @@
+1. Add the user to the group "sudo"
+
+$ su -
+$ adduser UserName sudo
+
+--------------------------------------------------------------------------------
+
+2. Configure swappiness
+
+Write inside /etc/sysctl.conf
+
+vm.swappiness = 10
+
+--------------------------------------------------------------------------------
+
+3. Install firmware packages
+
+$ sudo apt install firmware-linux
+
+--------------------------------------------------------------------------------
+
+4. Install the NVIDIA proprietary display driver
+
+$ sudo apt install nvidia-detect
+$ nvidia-detect
+
+$ sudo apt install linux-headers-amd64
+$ sudo apt install nvidia-driver
+
+--------------------------------------------------------------------------------
+
+5. Generate locales
+
+$ sudo dpkg-reconfigure locales
+
+--------------------------------------------------------------------------------
+
+6. Install dev tools
+
+$ sudo apt install vim git tmux imagemagick curl rsync mc tree pdftk
+
+--------------------------------------------------------------------------------
+
+7. Configure ImageMagick (/etc/ImageMagick-6/policy.xml)
+
+<policy domain="resource" name="memory" value="1GiB"/>
+<policy domain="resource" name="map" value="2GiB"/>
+<policy domain="resource" name="disk" value="4GiB"/>
+
+<policy domain="coder" rights="read | write" pattern="PDF" />
+
+--------------------------------------------------------------------------------
+
+8. Install Java
+
+$ apt-get install default-jre default-jdk
+
+--------------------------------------------------------------------------------
+
+9. Install Node.js and npm
+
+$ sudo apt-get update
+$ sudo apt-get install -y ca-certificates curl gnupg
+$ sudo mkdir -p /etc/apt/keyrings
+$ curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg
+
+$ NODE_MAJOR=20
+$ echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_$NODE_MAJOR.x nodistro main" | sudo tee /etc/apt/sources.list.d/nodesource.list
+
+$ npm completion | sudo tee /etc/bash_completion.d/npm > /dev/null
+
+$ sudo npm install npm -g
+
+--------------------------------------------------------------------------------
+
+10. Install TeX Live and Gnuplot
+
+$ sudo apt install texlive gnuplot texlive-lang-german texlive-extra-utils hunspell-de-de hunspell-ru
+
+--------------------------------------------------------------------------------
+
+11. Install programs
+
+$ sudo apt install thunderbird keepassxc torbrowser-launcher calibre gimp texstudio gtimelog chromium vlc smplayer filezilla deja-dup
+
+--------------------------------------------------------------------------------
+
+12. Install Google Chrome, Dropbox, Anki
+
+--------------------------------------------------------------------------------
+
+13. Install fonts
+
+$ sudo apt install fonts-jetbrains-mono
+
+--------------------------------------------------------------------------------
+
+FAU
+
+- SP
+$ sudo apt install subversion valgrind manpages-posix manpages-posix-dev
+
+- GLoIn
+$ sudo apt install coq coqide
+
+- AlgoKS
+$ sudo apt install python3-pip
+$ pip install --user numpy
+
+$ pip install notebook
+
+- GraPra
+$ sudo apt install gcc-8 build-essential cmake
+$ sudo apt install libgl1-mesa-dev libglu1-mesa-dev
+$ sudo apt install libboost-all-dev
+$ sudo apt install libsdl2-dev
+
+- MW
+$ sudo apt intall clang-format
+
+- WBS
+$ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+- Bachelorarbeit
+$ sudo apt install cmake ccache ninja-build
+
+sudo apt install build-essential g++-multilib 
+wget https://github.com/WebAssembly/wasi-sdk/releases/download/wasi-sdk-20/wasi-sdk-20.0-linux.tar.gz
+sudo tar -xvf wasi-sdk-20.0-linux.tar.gz -C /opt/
+rm wasi-sdk-20.0-linux.tar.gz
+sudo mv /opt/wasi-sdk-20.0/ /opt/wasi-sdk
+
+curl https://wasmtime.dev/install.sh -sSf | bash
+
+sudo apt install texlive-full
+
+sudo apt install python3-pandas python3-seaborn
+
+--------------------------------------------------------------------------------
+
+Xournal
+IDEA
+
+sudo usermod -a -G vboxusers username
+
+sudo apt install time
+
+
+/etc/systemd/logind.conf
+
+HandleLidSwitch=ignore
+HandleLidSwitchDocked=ignore
+
+
+sudo apt install unrar zip unzip
+
+emacs terminator
+
+pdfgrep
+tig
+install zsh
+
+
+Safe Eyes
+Double Commander
+GVim
+GnuCach
+Configure gtimelog
+sudo apt install fzf
+sudo apt install neovim
+sudo apt install maven ant
+ttf-mscorefonts-installer
+https://www.nerdfonts.com/
+https://github.com/ohmyzsh/ohmyzsh
+sudo npm install -g tree-sitter-cli

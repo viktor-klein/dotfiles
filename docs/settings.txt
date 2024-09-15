@@ -1,0 +1,205 @@
+1. Settings
+    - Appearance
+        - Style
+            - Dark
+    - Multitasking
+        - Fixed number of workspaces
+            - 5
+    - Privacy:
+        - Location Services
+            - Off
+    - Power
+        - Automatic Suspend
+            - 15
+    - Displays
+        - Scale
+            - 200%
+    - Keyboard
+        - Input Sources
+            - German
+            - Russian
+    - Date & Time
+        - Automatic Time Zone
+            - CEST (Berlin, Germany)
+
+--------------------------------------------------------------------------------
+
+2. Tweaks
+    - Appearance
+        - Legacy Applications
+            - Adwaita-dark
+    - Top Bar
+        - Weekday
+        - Seconds
+        - Week Numbers
+
+--------------------------------------------------------------------------------
+
+3. Software & Updates
+    - contrib
+    - non-free
+
+--------------------------------------------------------------------------------
+
+4. Terminal
+
+Create a new profile
+Set it as default
+
+    - General
+        - Theme variant
+            - Dark
+    - Profile
+        - Text
+            - Custom font
+                - JetBrainsMono Nerd Font 11
+            - Cell spacing
+                - 1x1.20
+        - Colors
+            - Build-in schemes
+                - GNOME
+            - Show bold text in bright colors
+
+--------------------------------------------------------------------------------
+
+5. .bashrc
+
+Comment
+    - HISTSIZE
+    - HISTFILESIZE
+
+--------------------------------------------------------------------------------
+
+5. Default Application
+    - txt
+        - Text Editor
+
+--------------------------------------------------------------------------------
+
+6. Software
+    - Update Preferences
+        - Automatic Updates
+            - Off
+
+--------------------------------------------------------------------------------
+
+7. Files
+    - Bookmarks
+        - Dropbox
+        - files
+    - Show Hidden Files
+    - Preferences
+        - General
+            - Show Folders Before Files
+
+--------------------------------------------------------------------------------
+
+8. Disks
+    - Mount options
+
+--------------------------------------------------------------------------------
+
+9. Extensions
+    - Applications Menu
+    - Native Window Placement
+    - Places Status Indicator
+    - Removable Drive Menu
+    - Workspace Indicator
+
+--------------------------------------------------------------------------------
+
+10. Google Chrome
+    - Automatically send usage statistics and crash reports to Google
+        - Off
+
+--------------------------------------------------------------------------------
+
+11. Thunderbird
+    - Settings
+        - Composition
+            - Language
+                - German
+    - Message Filters
+        - New
+            - Match all messages
+            - Move Message to
+                - Gmail Inbox
+    - Account Settings
+        - viktor_klein_private@outlook.com
+            - Manage Identities...
+                - Add...
+                    - Your Name
+                        - Viktor Klein
+                    - Email Address
+                        - v_klein@outlook.com
+                - Set Default
+                    - v_klein@outlook.com
+
+--------------------------------------------------------------------------------
+
+12. TimeLog
+
+$ cd ~/.local/share/gtimelog/
+$ ln -s ~/Dropbox/Programs/gtimelog/tasks.txt
+$ ln -s ~/Dropbox/Programs/gtimelog/timelog.txt
+
+--------------------------------------------------------------------------------
+
+13. IDEA
+    - Welcome
+        - Projects
+            - Enable New UI
+        - Options Menu
+            - Create Desktop Entry
+        - Plugins
+            - IdeaVim
+    - Settings
+        - Appearance & Behavior
+            - System Settings
+                - Reopen projects on startup
+                    - Off
+        - Editor
+            - Appearance
+                - Show method separators
+                - Show whitespaces
+            - Inlay Hints
+                - Off
+        - Version Control
+            - Commit
+                - Commit Message Inspections
+                    - Blank line between subject and body
+                    - Limit body line
+                    - Limit subject line
+
+--------------------------------------------------------------------------------
+
+14. KeyPassXC
+    - Application Settings
+        - Basic Settings
+            - General
+                - File Management
+                    - Automatically save after every change
+                        - Off
+                    - Automatically save when locking database
+                        - Off
+                    - Automatically save non-data changes when locking database
+                        - Off
+
+--------------------------------------------------------------------------------
+
+15. Weather
+    - Nürnberg
+    - Temperature Unit
+        - Celsius
+
+
+Firefox
+Bring it all with you: Not now
+Make it your own: System theme
+
+
+Chrome spell check (German, Russian)
+
+
+source /usr/share/doc/fzf/examples/key-bindings.bash
+source /usr/share/bash-completion/completions/fzf
