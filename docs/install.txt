@@ -1,0 +1,300 @@
+1. Add the user to the group "sudo"
+
+$ su -
+$ adduser UserName sudo
+
+--------------------------------------------------------------------------------
+
+2. Configure sources
+
+$ sudo rm /etc/apt/sources.list
+
+$ sudo nano /etc/apt/sources.list.d/debian.sources
+
+Types: deb deb-src
+URIs: http://deb.debian.org/debian/
+Suites: trixie trixie-updates
+Components: main contrib non-free non-free-firmware
+Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg
+
+Types: deb deb-src
+URIs: https://security.debian.org/debian-security
+Suites: trixie-security
+Components: main contrib non-free non-free-firmware
+Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg
+
+--------------------------------------------------------------------------------
+
+3. Configure swappiness
+
+$ echo 'vm.swappiness=10' | sudo tee /etc/sysctl.d/swappiness.conf
+
+--------------------------------------------------------------------------------
+
+4. Install firmware packages
+
+$ sudo apt install firmware-linux
+
+--------------------------------------------------------------------------------
+
+5. Enable SecureBoot
+
+$ sudo apt install dkms
+
+$ sudo mkdir -p /var/lib/shim-signed/mok
+$ sudo cd /var/lib/shim-signed/mok
+$ sudo openssl req -nodes -new -x509 -newkey rsa:2048 -keyout MOK.priv -outform DER -out MOK.der -days 36500 -subj "/CN=My Debian MOK/"
+$ sudo openssl x509 -inform der -in MOK.der -out MOK.pem
+
+$ sudo mokutil --import /var/lib/shim-signed/mok/MOK.der # prompts for one-time password
+
+<rebooting machine then enters MOK manager EFI utility: enroll MOK, continue, confirm, enter password, reboot>
+
+$ sudo mokutil --test-key /var/lib/shim-signed/mok/MOK.der
+
+$ sudo nano /etc/dkms/framework.conf
+
+mok_signing_key="/var/lib/shim-signed/mok/MOK.priv"
+mok_certificate="/var/lib/shim-signed/mok/MOK.der"
+
+--------------------------------------------------------------------------------
+
+6. Install the NVIDIA proprietary display driver
+
+$ sudo apt install nvidia-detect
+$ nvidia-detect
+
+$ sudo apt install linux-headers-amd64
+
+$ sudo apt install nvidia-kernel-dkms nvidia-driver
+$ dkms status
+
+<restart>
+
+$ echo 'GRUB_CMDLINE_LINUX="$GRUB_CMDLINE_LINUX nvidia-drm.modeset=1 nvidia-drm.fbdev=1"' | sudo tee /etc/default/grub.d/nvidia-modeset.cfg
+$ sudo update-grub
+
+$ echo 'options nvidia NVreg_PreserveVideoMemoryAllocations=1' | sudo tee /etc/modprobe.d/nvidia-power-management.conf
+
+--------------------------------------------------------------------------------
+
+7. Install ufw
+
+$ sudo apt install ufw
+$ sudo ufw enable
+$ sudo ufw default deny incoming
+$ sudo ufw default allow outgoing
+
+--------------------------------------------------------------------------------
+
+8. Install dev tools
+
+$ sudo apt install
+    curl \
+    fzf \
+    git \
+    imagemagick \
+    make \
+    pdftk \
+    rsync \
+    tmux \
+    tree \
+    vim
+$ sudo apt install wl-clipboard
+
+--------------------------------------------------------------------------------
+
+9. Install zsh
+
+$ sudo apt install zsh
+$ chsh -s $(which zsh)
+$ echo $SHELL
+
+--------------------------------------------------------------------------------
+
+10. Install Oh My Zsh! & Starship
+
+$ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+$ curl -sS https://starship.rs/install.sh | sh
+
+--------------------------------------------------------------------------------
+
+11. Install JetBrainsMono Nerd Font
+
+curl -OL https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.tar.xz
+mkdir jetbrains-mono-tmp
+tar -xJf JetBrainsMono.tar.xz -C jetbrains-mono-tmp
+sudo mkdir -p /usr/local/share/fonts/jetbrains-mono
+sudo install -m 644 jetbrains-mono-tmp/*.ttf /usr/local/share/fonts/jetbrains-mono
+rm -rf JetBrainsMono.tar.xz jetbrains-mono-tmp
+sudo fc-cache -f /usr/local/share/fonts/jetbrains-mono
+
+--------------------------------------------------------------------------------
+
+12. Install Java
+
+$ sudo apt install default-jdk
+
+--------------------------------------------------------------------------------
+
+13. Install Node.js and npm
+
+# Download and install nvm:
+$ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
+
+# in lieu of restarting the shell
+$ \. "$HOME/.nvm/nvm.sh"
+
+# Download and install Node.js:
+$ nvm install 22
+
+# Verify the Node.js version:
+$ node -v # Should print "v22.18.0".
+$ nvm current # Should print "v22.18.0".
+
+# Verify npm version:
+npm -v # Should print "10.9.3".
+
+--------------------------------------------------------------------------------
+
+14. Install TeX Live
+
+$ sudo apt install
+    texlive \
+    texlive-lang-cyrillic \
+    texlive-lang-german \
+
+--------------------------------------------------------------------------------
+
+15. Install programs
+
+$ sudo apt install \
+    calibre \
+    gimp \
+    gtimelog \
+    hunspell-de-de \
+    hunspell-ru \
+    keepassxc-full \
+    thunderbird \
+    torbrowser-launcher \
+    xournalpp
+$ sudo apt install \
+    chromium \
+    deja-dup \
+    filezilla \
+    smplayer \
+    texstudio \
+    ttf-mscorefonts-installer \
+    vlc
+
+--------------------------------------------------------------------------------
+
+16. Install Google Chrome, Dropbox, Anki, Neovim
+
+--------------------------------------------------------------------------------
+
+17. Install IntelliJ IDEA
+
+$ sudo mkdir -p /opt/jetbrains
+$ sudo chown dwarven:dwarven /opt/jetbrains
+$ tar -xzf ideaIC-2025.2.tar.gz -C /opt/jetbrains
+$ rm ideaIC-2025.2.tar.gz
+$ mv /opt/jetbrains/idea-IC-252.23892.409 /opt/jetbrains/idea
+$ cd /opt/jetbrains/idea/bin
+$ ./idea.sh
+$ ./idea
+
+--------------------------------------------------------------------------------
+
+18. Install Virtualbox
+
+$ sudo nano /etc/apt/sources.list.d/debian.sources
+
+Types: deb
+URIs: https://download.virtualbox.org/virtualbox/debian
+Suites: trixie
+Components: contrib
+Architectures: amd64
+Signed-By: /usr/share/keyrings/oracle-virtualbox-2016.gpg
+
+$ wget -O- https://www.virtualbox.org/download/oracle_vbox_2016.asc | sudo gpg --yes --output /usr/share/keyrings/oracle-virtualbox-2016.gpg --dearmor
+
+$ sudo apt-get update
+$ sudo apt-get install virtualbox-7.2
+
+--------------------------------------------------------------------------------
+
+FAU
+
+- SP
+$ sudo apt install subversion valgrind manpages-posix manpages-posix-dev
+
+- GLoIn
+$ sudo apt install coq coqide
+
+- AlgoKS
+$ sudo apt install python3-pip
+$ pip install --user numpy
+
+$ pip install notebook
+
+- GraPra
+$ sudo apt install gcc-8 build-essential cmake
+$ sudo apt install libgl1-mesa-dev libglu1-mesa-dev
+$ sudo apt install libboost-all-dev
+$ sudo apt install libsdl2-dev
+
+- MW
+$ sudo apt intall clang-format
+
+- WBS
+$ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+- Bachelorarbeit
+$ sudo apt install cmake ccache ninja-build
+
+$ sudo apt install build-essential g++-multilib
+$ wget https://github.com/WebAssembly/wasi-sdk/releases/download/wasi-sdk-20/wasi-sdk-20.0-linux.tar.gz
+$ sudo tar -xvf wasi-sdk-20.0-linux.tar.gz -C /opt
+$ rm wasi-sdk-20.0-linux.tar.gz
+$ sudo mv /opt/wasi-sdk-20.0/ /opt/wasi-sdk
+
+$ curl https://wasmtime.dev/install.sh -sSf | bash
+
+$ sudo apt install texlive-full
+
+$ sudo apt install python3-pandas python3-seaborn
+
+--------------------------------------------------------------------------------
+
+5. Generate locales
+
+$ sudo dpkg-reconfigure locales
+
+--------------------------------------------------------------------------------
+
+7. Configure ImageMagick (/etc/ImageMagick-6/policy.xml)
+
+<policy domain="resource" name="memory" value="1GiB"/>
+<policy domain="resource" name="map" value="2GiB"/>
+<policy domain="resource" name="disk" value="4GiB"/>
+
+<policy domain="coder" rights="read | write" pattern="PDF" />
+
+--------------------------------------------------------------------------------
+
+sudo usermod -a -G vboxusers username
+
+/etc/systemd/logind.conf
+
+HandleLidSwitch=ignore
+HandleLidSwitchDocked=ignore
+
+
+sudo apt install
+    maven \
+    tig \
+    unrar \
+    unzip \
+    zip

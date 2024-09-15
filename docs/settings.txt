@@ -1,0 +1,213 @@
+1. Settings
+    - Displays
+        - Scale
+            - 200%
+        - Night Light
+            - Night Light
+                - On
+            - Times
+                - From
+                    - 00:01
+                - To
+                    - 23:59
+            - Color Temperature
+                - 1
+    - Multitasking
+        - Fixed Number of Workspaces
+            - 5
+    - Appearance
+        - Style
+            - Dark
+    - Wellbeing
+        - Break Reminders
+            - Eyesight Reminders
+                - On
+    - Keyboard
+        - Input Sources
+            - German
+            - Russian
+    - System
+        - Date & Time
+            - Time Zone
+                - CEST (Berlin, Germany)
+            - Time Format
+                - 24-hour
+            - Clock & Calendar
+                - Week Day
+                    - On
+                - Seconds
+                    - On
+                - Week Numbers
+                    - On
+
+--------------------------------------------------------------------------------
+
+2. Software
+    - Preferences
+        - Software Updates
+            - Manual
+
+--------------------------------------------------------------------------------
+
+3. Terminal
+
+Create a new profile
+Set it as default
+Install the Tokyo Night theme (https://github.com/folke/tokyonight.nvim)
+
+    - Profile
+        - Text
+            - Custom font
+                - JetBrainsMono Nerd Font 11
+            - Cell spacing
+                - 1x1.20
+        - Colors
+            - Show bold text in bright colors
+
+--------------------------------------------------------------------------------
+
+4. Files
+    - Bookmarks
+        - Dropbox
+    - View Options
+        - Show Hidden Files
+    - Preferences
+        - General
+            - Show Folders Before Files
+
+--------------------------------------------------------------------------------
+
+5. Weather
+    - Nuremberg
+    - Temperature Unit
+        - Celsius
+
+--------------------------------------------------------------------------------
+
+6. Clocks
+    - World
+        - Novosibirsk
+
+--------------------------------------------------------------------------------
+
+7. KeyPassXC
+    - Application Settings
+        - General
+            - Basic Settings
+                - File Management
+                    - Automatically save after every change
+                        - Off
+                    - Automatically save when locking database
+                        - Off
+                    - Automatically save non-data changes when locking database
+                        - Off
+
+--------------------------------------------------------------------------------
+
+8. Thunderbird
+    - Quick Filter
+        - On
+    - Message list display options
+        - Sort by
+            - Unthreaded
+    - Display the Thunderbird Menu
+        - Message Filters
+            - Filters for
+            - New
+                - Match all messages
+                - Move Message to
+                    - Gmail Inbox
+    - Settings
+        - Composition
+            - Spelling
+                - Language
+                    - German
+                    - Russian
+    - Account Settings
+        - viktor_klein_private@outlook.com
+            - Manage Identities
+                - Add
+                    - Your Name
+                        - Viktor Klein
+                    - Email Address
+                        - v_klein@outlook.com
+                - Set Default
+                    - v_klein@outlook.com
+        - Account Actions
+            - Set as Default
+                - viktor_klein_private@outlook.com
+
+--------------------------------------------------------------------------------
+
+9. IntelliJ IDEA
+    - Welcome
+        - Options Menu
+            - Create Desktop Entry
+        - Plugins
+            - IdeaVim
+            - JetBrains Academy
+            - JetBrains AI Assistant
+    - Settings
+        - Editor
+            - General
+                - Appearance
+                    - Show method separators
+                        - On
+                    - Show whitespaces
+                        - On
+            - Inlay Hints
+                - Off
+        - Version Control
+            - Commit
+                - Commit Message Inspections
+                    - Blank line between subject and body
+                        - On
+                    - Limit body line
+                        - On
+                    - Limit subject line
+                        - On
+
+--------------------------------------------------------------------------------
+
+10. TimeLog
+
+$ cd ~/.local/share/gtimelog/
+$ ln -s ~/Dropbox/Programs/gtimelog/tasks.txt
+$ ln -s ~/Dropbox/Programs/gtimelog/timelog.txt
+
+--------------------------------------------------------------------------------
+
+11. Chrome
+    - Settings
+        - Languages
+            - Preferred languages
+                - Russian
+                    - On
+            - Spell check
+                - Use spell check for
+                    - German (Germany)
+                        - On
+                    - Russian
+                        - On
+
+--------------------------------------------------------------------------------
+
+12. UFW
+
+sudo ufw enable
+sudo ufw default deny incoming
+sudo ufw default allow outgoing
+
+--------------------------------------------------------------------------------
+
+8. Disks
+    - Mount options
+
+--------------------------------------------------------------------------------
+
+9. Extensions
+    - Applications Menu
+    - Native Window Placement
+    - Places Status Indicator
+    - Removable Drive Menu
+    - Workspace Indicator
